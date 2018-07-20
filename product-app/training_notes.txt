@@ -1,0 +1,79 @@
+// npx create-react-app product-app
+
+1. Layout Engines has lot to do with rendering.
+2. Keeping DOM in sync with data causes lots of issues with perfornmence.
+3. React exposes a virtual dom avoiding devs not to manipulate actual dom.
+4. virtual dom : VD
+5. Created through render method in components.
+6. VD - stateless, immutable
+7. Expectation is optimize components.
+8. Diff : Algo to decide what changes we had
+9. Payload will not make difference in NewLayout Engine. (Download/Latency)
+10. Code Splitting and npm run build and host it to production server.
+
+/////How to decide components
+1. Single Responsibility
+2. Reusable
+3. Testability
+4. perfornmence (V.Dom)
+
+//// Creating Configurations
+1. WebPack
+2. Babel
+3. NPM NO need of --save in npm 5+
+4. Semantic Version : react@
+5. NPX - to install stuffs globally
+6. EJECT - ejects all the webpack commands
+
+
+////ES-6 Fundamentals
+1. let, const
+2. for..of loop, for..in loop (index)
+3. default parameters
+4. rest operator func(name, ...args) for(let arg of args)//console.log(arg) - creates array.
+5. spread operator : unpacks the array elements to avoid aray or array. Used for copying object.
+6. DeConstruct let data = {a:1, b:2}
+let {a, c} = data; can be used as function object.
+7. class : can-not overload member functions in javascripts (no overloading)
+- this is explicit
+- super("Circle")- creates a prototype chain
+- static - should be out side class (ES-6), but in ES-Next
+8. Arrow functions :- resolves the "this" and sets caller as context
+9. Tamplate Literals : BackQuote ` and ${}
+10. Module : Each file is a module, Multi Export and Import (import * as tm from "./sdas" - alising)
+11. deafult export : one in a class : import default : without {} //default import is alias by deafult
+12. Promise, Map/Set, 
+13. ES7 : Array prototype
+14. ES8 : async and await
+15. ES.Next : spread operdator for object (es6 for array only)
+16. items.map((item, index) => `<CartItem id=${item.id} index=${item.index} />`)
+
+////VS Code 
+>=
+
+////React :
+1. components : class and functional comps
+2. Siblings can't share data directly
+3. Props are immutable, don't modify
+4. use ES.Next for event binding
+5. all the methods are stacked but executed only once 
+6. forceupdate will skip shouldComponentUpdate but setstate always reads shouldComponentUpdate.
+7. key : is a Keyword and we can't read it in props , similar to children
+8. Mutability : immutablity (mutable.js for huge data)
+    cItems = [...items] //Spread operator clones data only, a shallow copy (copies data, with a new reference)
+    object : cItem = {...item1, price:100} // item wont change
+9. should not use splice method //use filter : this.state.items.filter(item => item.id != id );
+10. LifeCycle :
+        -Create,
+        -DeStruct,
+        -Update
+11. Do not do much code in constructor, better use initialize method.
+12. initialize state in componentWillMount.
+13. use ajax calls in componentDidMount (client side rendering) will re-render
+14. higher order components
+15. User React.Fragment, use if no view to render.
+16. use componentWillUnmount to clear call threads, unsubscribe etc - perfornmence
+17. Update Cycle :- 5 steps
+18. setstate also contains a call back, however it renders twice has specific case to use
+19. Use Pure components for comparison
+    
