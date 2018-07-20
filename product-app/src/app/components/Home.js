@@ -5,7 +5,7 @@ export default class Home extends Component {
     constructor(props){
         super(props);//best practice
         this.state = {
-            title:props.appTitle,
+            title:"Home",//props.appTitle,
             counter: props.startValue
         }
     //ES7: create this method once per instance
@@ -77,13 +77,10 @@ export default class Home extends Component {
                     ()=> functions created on every render 
                 */}
                 {<button onClick={()=>this.increment()}>increment</button>}
-                <hr/>
                 {<button onClick={this.incrementBy2}>increment 2</button>}
 
-                <hr/>
                 {<button onClick={this.decrement}>Decrement </button>}
 
-                <hr/>
 
                 <div onClick={this.testClick}>
                 <div onClick={this.testClick}>

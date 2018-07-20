@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 
 import CartItem from "./CartItem";
-
+import SearchButton from "./SearchButton";
  //TODO: PureComponent
 
 export default class CartList extends Component {
@@ -32,6 +32,7 @@ export default class CartList extends Component {
         return (
             <div> 
             <h2>Cart List</h2>
+            {/* <SearchButton /> */}
             <table>
                 <thead>
                     <tr>

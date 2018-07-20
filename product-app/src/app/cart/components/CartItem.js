@@ -24,6 +24,7 @@ export default class CartItem extends Component {
 
     componentDidMount(){
         console.log("CartItem Mounted");
+        this.inputElemet.focus();
     }
 
     shouldComponentUpdate(nextProps, nextState){
@@ -54,6 +55,7 @@ export default class CartItem extends Component {
                             value={this.state.qty}
                             type="number"
                             onChange={this.onTextChange}
+                            ref={element => this.inputElemet = element}
                      />
                 </td>
                 <td>{item.price * item.qty}</td>

@@ -12,6 +12,7 @@ export default function Footer(props){
         <div>
             <hr/>
             <p>Copyright@ {year + 10}, {appTitle + 300}</p>
+            {props.children}
         </div>
     )
 }

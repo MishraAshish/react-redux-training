@@ -76,4 +76,13 @@ let {a, c} = data; can be used as function object.
 17. Update Cycle :- 5 steps
 18. setstate also contains a call back, however it renders twice has specific case to use
 19. Use Pure components for comparison
-    
+20. Component is not rendered everytime sigle instance be used everytime - render method
+21. Do not pass arrow function,to avoid re-rendering in pureComponent
+22. ToDo : Check if button component works alone not render
+
+23. ref will be used only in and after componentDidMount.
+
+/////React Router : browserHistory(HTML5)/HashRouter
+1. react-router-dom is used to put routing on react supports both 
+2. NavLink and Link can be used in switch
+3. Switch : renders only the first child passed in router
