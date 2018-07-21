@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
+import store from "../configureStore";
+import {addItem} from "../redux-cart/state/actions";
+
 export default class Home extends Component {
     constructor(props){
         super(props);//best practice
@@ -12,6 +15,20 @@ export default class Home extends Component {
     // bind this context as well
     this.incrementBy2 = this.incrementBy2.bind(this);        
     }
+
+    addItem = () => {
+        let id = Math.ceil(Math.random() * 10000);
+        let item = {
+            id,
+            name: `Product ${id}`,
+            price: Math.ceil(Math.random() * 100),
+            qty: 1
+        }
+
+        const action = addItem(item);
+        store.dispatch(action);
+    }
+
     increment(){
         //BAD, mutating state directly
         console.log("log ounter", this.state.counter);
@@ -65,6 +82,10 @@ export default class Home extends Component {
         return false; // doesn't call render
     }
 
+    componentWillMount(){
+        store.subscribe(() => this.forceUpdate() )
+    }
+
     render(){
         //this.props is keyword
         console.log("Home render",this.state.counter);
@@ -72,6 +93,8 @@ export default class Home extends Component {
             <div>
                 <h2>{this.state.title}</h2>
                 <p>Current Counter : {this.state.counter}</p>
+                <p>Cart Length : {store.getState().items.length} </p>
+                {<button onClick={this.addItem}>Add Item</button>}
                 <hr/>
                 {/* events take call back function  
                     ()=> functions created on every render 

@@ -86,3 +86,45 @@ let {a, c} = data; can be used as function object.
 1. react-router-dom is used to put routing on react supports both 
 2. NavLink and Link can be used in switch
 3. Switch : renders only the first child passed in router
+
+
+//// Problems with react
+1. Component state destroyed
+2. Sharing Data at deeper level is not easy
+3. Component setstate is async
+4. Sharing data across component
+
+//// : Flux is the architecture and Redux is implementation
+1. Redux happened to be a predictable state/ pure function (output remains predicatable, no internal state)
+2. PureFunction(items, item){return [...items, item]}
+
+
+///// Redux ////
+1. Actions : object containing type and payloads
+2. Send action to store using store.dispatch. Acts as a contract
+3. Action Creators : 
+4. Reducers : Pure functions, follow single responsibility
+5. Store : createStore and getState, dispatch - invoke action to strore (state, action)
+6. Dispatch : Sync calls
+7. Subscribe : called after every dispatch, recvievs a callback
+8. unsubscribe : Every subscribe call has an unsubscribe
+9. API's in call Store
+ - createStore - (reducer callBack, initialValue for state)
+ - getState
+ - dispatch
+ - subscribe
+ - unsubscribe
+ 
+ 10. store can have one reducer at a time
+ 11. combineReducer :- combines reducers in key value pair {state: stateReducer}
+ 12. action should be unique across the reducers.
+ 13. VM already knows if switch contains the key, then only it calls the statement
+ 14. Multiple reducers are used to resolve associated actions across all the reducers
+ 15. Elem is the pattern used in reducer pattern.
+ 16. Store : Keeps data in javascript object by default but can be stored in local-storage
+ 17. redux-persist : library can be used to make data persistant
+ 18. Store : it can be multiple but as per architecture its not allowed, 
+     its preferred to have a single source of truth - User and Auth Reducers
+ 19. segrgate code using at each module : Component,Container, State
+ 20. seed parameters can be passed along with combine reducers as Params.
+ 21. create containers for anything you want.
