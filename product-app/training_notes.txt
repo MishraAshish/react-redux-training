@@ -128,3 +128,17 @@ let {a, c} = data; can be used as function object.
  19. segrgate code using at each module : Component,Container, State
  20. seed parameters can be passed along with combine reducers as Params.
  21. create containers for anything you want.
+
+
+
+ //// code Splitting
+ 1. Loadable to split code
+ 2. 
+
+ ///
+
+ // bindActionCreators - react-redux
+// returns a wrapper function
+// that calls action creator method
+// and dispatch
+2. use : bindActionCreators(actionName, dispatch)

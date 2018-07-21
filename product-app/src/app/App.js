@@ -1,67 +1,85 @@
-import React from "react";//. is current directory nothing means node directory and its a deafult export in react
+import React from 'react';
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import Home from "./components/Home";
 import About from "./components/About";
+
 import NotFound from "./components/NotFound";
 
-import Cart from "./cart/components/Cart";
+import Cart from './cart/components/Cart';
 
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import ReduxCart from './redux-cart/containers/ReduxCart';
+
+import ProductList from './redux-cart/containers/ProductList';
+
+import {BrowserRouter as Router, 
+        Switch,
+        Route } from 'react-router-dom';
 
 import "./App.css";
-//react-dom does the diffing and creating of 
-export default class App extends React.Component{ //components must always be capital case
-    //react keyword
-    // create amd return virtual dom
-    // render(){ //Very expensive
-    //     console.log("App Container");
-    //     return React.createElement("h1", {id:'header1'},
-    //                                  'Welcome to react');
-    // }
 
-    constructor(){
-        super(); //ES6 must to generate proptoype chain
+export default class App extends React.Component {
+    constructor() {
+        super(); //ES6 must
 
-        //State, mutating data, owned by this component
+        //State, mutable data, owned by this component
         // state is a react keyword
         this.state = {
             appTitle: 'Product App',
-            year: 2008
+            year: 2018 
         }
     }
+ 
+    //react keyword
+    // create and return virtual dom
+    render() {
+        console.log("App render");
+ 
 
-    //Composition : App is the parent component
-    //Header and Footer is child component
+        //Composition: App is the parent component
+        // Header and Footer are child for App component
 
-    //JSX => Javascript + XML
-    //JSX shall convert to Javascript at build time
-    render(){
-        return(
+        // JSX => JavaScript + XML
+        //JSX shall convert to JavaScript at build time
+        return (
             <Router>
-                <div>
-                    {/* share data with child using props */}
-                    
-                    <Header appTitle={this.state.appTitle}/>
-                    <Switch>
-                        <Route path="/" exact component={Home}/>
-                        <Route path="/home" exact component={Home}/>
-                        <Route path="/cart" exact component={Cart}/>
-                        <Route path="/about" exact component={About}/>
-                        <Route path="*" component={NotFound}/>
-                    </Switch>
+            <div>
+                {/* Share data with child  using props */}
+                <Header appTitle={this.state.appTitle} />
 
 
-                    {/* <Cart/>
-                    <Home startValue={100} appTitle={this.state.appTitle}/>
-                    <About /> */}
-                    <Footer appTitle={this.state.appTitle} year={this.state.year}>
-                        {/* content view */}
-                        <p>Contact Time: 8:00 AM to 5:00 PM</p>
-                        <p>Hello Footer</p>
-                    </Footer>
-                </div>
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/cart" component={Cart} />
+                    <Route path="/products" component={ProductList} />
+                    <Route path="/redux-cart" component={ReduxCart} />
+                    <Route path="/about" component={About} />
+                    <Route path="*" component={NotFound} />
+                </Switch>
+
+                {/* <Cart />
+                
+                <Home startValue={100} />
+
+                <About /> */}
+
+
+                <Footer appTitle={this.state.appTitle} 
+                        year={this.state.year} >
+
+                    {/* content view */}
+                    <p>Contact time: 8:00 AM to 5:00 PM</p>
+                    <p>India Contact time: 9:00 to 6:00 PM</p>
+
+                </Footer>
+            </div>
             </Router>
         )
+
+        // return React.createElement("h1", 
+        //                             {id: 'head1'}, 
+        //                             'Welcome to React' );
     }
 }

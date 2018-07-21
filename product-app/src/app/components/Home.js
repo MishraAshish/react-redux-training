@@ -82,8 +82,14 @@ export default class Home extends Component {
         return false; // doesn't call render
     }
 
-    componentWillMount(){
-        store.subscribe(() => this.forceUpdate() )
+    componentDidMount(){
+       this.unsubscribeFn = store.subscribe(() => {
+            console.log("force update of component.");
+            this.forceUpdate()} )
+    }
+
+    componentWillUnmount(){
+        this.unsubscribeFn();
     }
 
     render(){
