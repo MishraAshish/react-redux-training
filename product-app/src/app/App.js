@@ -8,17 +8,41 @@ import About from "./components/About";
 
 import NotFound from "./components/NotFound";
 
-import Cart from './cart/components/Cart';
+//import Cart from './cart/components/Cart';
 
-import ReduxCart from './redux-cart/containers/ReduxCart';
+//import ReduxCart from './redux-cart/containers/ReduxCart';
 
 import ProductList from './redux-cart/containers/ProductList';
-
+import Loadable from "react-loadable"; //allows lazy loading
 import {BrowserRouter as Router, 
         Switch,
         Route } from 'react-router-dom';
 
 import "./App.css";
+
+// functional component, used as placeholder
+//when lazy loaded modules delayed
+function Loading() {
+    return (
+        <div>
+            Loading ...
+        </div>
+    )
+}
+
+const Cart = Loadable({
+    // import - specification
+    // webpack, create a seperate bundle
+    loader: () => import('./cart/components/Cart'),
+    loading: Loading,
+  });
+
+
+const ReduxCart = Loadable({
+    // import - specification
+    loader: () => import('./redux-cart/containers/ReduxCart'),
+    loading: Loading,
+  });
 
 export default class App extends React.Component {
     constructor() {

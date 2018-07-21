@@ -142,3 +142,8 @@ let {a, c} = data; can be used as function object.
 // that calls action creator method
 // and dispatch
 2. use : bindActionCreators(actionName, dispatch)
+
+
+npm i http-server -g
+
+https://github.com/nodesense/react-app
