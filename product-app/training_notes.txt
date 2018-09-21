@@ -28,7 +28,18 @@
 
 ////ES-6 Fundamentals
 1. let, const
-2. for..of loop, for..in loop (index)
+2. for..of loop, for..in loop (index)   : While for...in iterates over property names, for...of iterates over property values
+    var arr = [3, 5, 7];
+    arr.foo = "hello";
+    for (let i in arr) {
+        console.log(i); // logs "0", "1", "2", "foo"
+    }
+
+    for (let i of arr) {
+        console.log(i); // logs "3", "5", "7"
+        //it is does not log "3", "5", "7","hello"
+    }
+
 3. default parameters
 4. rest operator func(name, ...args) for(let arg of args)//console.log(arg) - creates array.
 5. spread operator : unpacks the array elements to avoid aray or array. Used for copying object.
@@ -43,10 +54,61 @@ let {a, c} = data; can be used as function object.
 10. Module : Each file is a module, Multi Export and Import (import * as tm from "./sdas" - alising)
 11. deafult export : one in a class : import default : without {} //default import is alias by deafult
 12. Promise, Map/Set, 
+    var myObject = [1, 2, 3]
+    var newobj = myObject.map((val) => {
+        console.log(val);
+        return val*val;
+    });   
 13. ES7 : Array prototype
 14. ES8 : async and await
+    const getUsers = (ms) => { // No need to make this async
+      return new Promise(resolve => setTimeout(resolve, ms));
+    };
+
+    // this function is async as we need to use await inside it
+    export const index = async (req, res) => {
+        await getUsers(5000);
+
+        res.json([
+        {
+            id: 1,
+            name: 'John Doe',
+        },
+        { id: 2,
+            name: 'Jane Doe',
+        },
+        ]);
+    };
+
 15. ES.Next : spread operdator for object (es6 for array only)
 16. items.map((item, index) => `<CartItem id=${item.id} index=${item.index} />`)
+    /// filter, map, some and reduce
+    var persons = [
+        {id : 1, name : "John", tags : "javascript"}, 
+        {id : 2, name : "Alice", tags : "javascript"}, 
+        {id : 3, name : "Roger", tags : "java"},
+        {id : 4, name : "Adam", tags : "javascript"},
+        {id : 5, name : "Alex", tags : "java"}
+    ];
+
+    //Filter
+    var javscriptPersons = persons.filter(personObj => personObj.tags.indexOf("javascript") > -1);
+    console.log(javscriptPersons);
+    
+    //Map
+    var nameArray = persons.map(personObj => personObj.name);
+    console.log(nameArray);
+
+    //Some : Short Circuit as soon as it meets the condition
+    var hasJava = persons.some(personObj => personObj.tags.indexOf("java") > -1);
+    console.log(hasJava);
+
+    //Reduce : Array.reduce is used when you want to process all the elements of an array to get a single value out of it.
+    var uniqueTags = persons.reduce((acc, personObj) => {
+                        acc[personObj.tags] = 1;
+                        return acc;
+                    },{});
+    console.log(uniqueTags);
 
 ////VS Code 
 >=
