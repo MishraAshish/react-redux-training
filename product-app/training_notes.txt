@@ -42,7 +42,19 @@
 
 3. default parameters
 4. rest operator func(name, ...args) for(let arg of args)//console.log(arg) - creates array.
+    
+    // Rest Properties
+    let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+    console.log(x); // 1
+    console.log(y); // 2
+    console.log(z); // { a: 3, b: 4 }
+
 5. spread operator : unpacks the array elements to avoid aray or array. Used for copying object.
+
+    // Spread Properties
+    let n = { x, y, ...z };
+    console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
+    
 6. DeConstruct let data = {a:1, b:2}
 let {a, c} = data; can be used as function object.
 7. class : can-not overload member functions in javascripts (no overloading)
