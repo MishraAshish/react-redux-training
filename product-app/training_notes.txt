@@ -54,7 +54,7 @@
     // Spread Properties
     let n = { x, y, ...z };
     console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
-    
+
 6. DeConstruct let data = {a:1, b:2}
 let {a, c} = data; can be used as function object.
 7. class : can-not overload member functions in javascripts (no overloading)
@@ -121,6 +121,16 @@ let {a, c} = data; can be used as function object.
                         return acc;
                     },{});
     console.log(uniqueTags);
+
+17. Generator Functions (a self iterating and yeild function created with * on it)
+    function* generator() {
+        console.log("Sent", "Ashish");
+        console.log("Yield", yield);
+    }
+
+    const iterator = generator();
+    iterator.next(1); // Logs "Ashish 1"
+    iterator.next(2); // Logs "Yield 2"
 
 ////VS Code 
 >=
